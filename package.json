@@ -1,0 +1,61 @@
+{
+  "name": "taskmanagementapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "tslint": "tslint --project tsconfig.json",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint-and-fix": "eslint \"src/**/*.ts\" --fix",
+    "build": "rimraf ./build && tsc",
+    "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "start": "ts-node --files src/index.ts",
+    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "pre-commit": "npm run prettier && npm run lint-and-fix",
+    "pre-push": "npm run prettier && npm run lint-and-fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chidinma21/Vending-Machine-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chidinma21/Vending-Machine-API/issues"
+  },
+  "homepage": "https://github.com/Chidinma21/Vending-Machine-API#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.15.11",
+    "@types/passport": "^1.0.12",
+    "@types/uuid": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
+    "rimraf": "^4.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "http-status": "^1.6.2",
+    "joi": "^17.9.1",
+    "mongoose": "^5.9.4",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "uuid": "^9.0.0"
+  }
+}
