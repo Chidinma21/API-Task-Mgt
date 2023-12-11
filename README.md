@@ -1,5 +1,5 @@
-# Vending Machine
-Vending machine where one can buy drinks using coins and cash.
+# Task Management API
+Task Management API. Contains endpoints to create user accounts, create, view, update and delete tasks accordingly.
 
 
 ## Getting started
@@ -7,8 +7,8 @@ Vending machine where one can buy drinks using coins and cash.
 ### Install
 
 ```
-git clone `git@github.com:Chidinma21/Vending-Machine-API.git`
-cd Vending-Machine-API
+git clone `git@github.com:Chidinma21/API-Task-Mgt.git`
+cd API-Task-Mgt
 npm install
 ```
 
