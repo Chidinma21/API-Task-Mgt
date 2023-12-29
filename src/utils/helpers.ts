@@ -1,7 +1,9 @@
 import { Response } from 'express';
 import { v4 } from 'uuid';
 
-export const generateUuid = () => v4().replace(/-/g, '');
+export const generateId = () => v4()
+
+export const generateShortId = () => v4().split('-')[0]
 
 export const respond =
   (res: Response) =>

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { AnySchema } from 'joi';
+import { AnySchema, ValidationError } from 'joi';
 
 type Path = 'params' | 'query' | 'body' | 'header';
 
@@ -14,7 +14,7 @@ const validate = (schema: Record<string, AnySchema>) => {
       );
       return next();
     } catch (err) {
-      next({ ...(err as Error), statusCode: httpStatus.BAD_REQUEST });
+      next({ ...(err as ValidationError), statusCode: httpStatus.BAD_REQUEST });
     }
   };
 };

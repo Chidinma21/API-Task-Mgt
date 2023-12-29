@@ -14,10 +14,7 @@ export default {
   connect: async (config: Config) => {
     const mongoURI = config.mongoUri!;
     await mongoose.connect(mongoURI, {
-      keepAlive: true,
-      useCreateIndex: true,
       useNewUrlParser: true,
-      useFindAndModify: false,
       useUnifiedTopology: true
     });
     return mongoose.connection;
