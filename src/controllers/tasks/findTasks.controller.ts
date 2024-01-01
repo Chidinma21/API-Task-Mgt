@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { getAllTasks, getTask } from '../repositories/tasks';
+import { getAllTasks } from '../../repositories/tasks';
+import { evaluateUser } from '../../utils/helpers';
 
 export const getUserTasks = async (
   req: Request,
@@ -8,9 +9,9 @@ export const getUserTasks = async (
   _next: NextFunction
 ) => {
   try {
-    const { userId } = req.query; //Remove this from query and get user from store after auth is implemented
+    const user = await evaluateUser(req);
 
-    const tasks = await getAllTasks(userId as string);
+    const tasks = await getAllTasks(user!.userId as string);
 
     return res.respond(
       httpStatus.OK,

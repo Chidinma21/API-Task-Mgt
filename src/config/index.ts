@@ -10,7 +10,9 @@ const config: Config = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
   commitHash: process.env.CI_COMMIT_SHORT_SHA,
-  mongoUri: process.env.MONGO_URI
+  mongoUri: process.env.MONGO_URI,
+  jwtSecKey: process.env.JWT_SEC_KEY!,
+  jwtExpiry: process.env.JWT_EXPIRY!
 };
 
 export default config;

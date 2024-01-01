@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { getTask } from '../repositories/tasks';
+
+import { getTask } from '../../repositories/tasks';
+import { evaluateUser } from '../../utils/helpers';
 
 export const getSingleTask = async (
   req: Request,
@@ -9,10 +11,9 @@ export const getSingleTask = async (
 ) => {
   try {
     const { taskId } = req.query;
+    const user = await evaluateUser(req);
 
     const task = await getTask(taskId as string);
-
-    // Cater for if task does not belong to user
 
     if (!task) {
       return res.respond(
@@ -22,6 +23,14 @@ export const getSingleTask = async (
         {
           task
         }
+      );
+    }
+
+    if (task.userId !== user?.userId) {
+      return res.respond(
+        httpStatus.BAD_REQUEST,
+        `Task ${taskId} does not belong to ${user!.userId}`,
+        false
       );
     }
 

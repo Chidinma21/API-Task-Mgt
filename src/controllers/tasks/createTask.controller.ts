@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { createUserTask, getTask } from '../repositories/tasks';
-import { generateShortId } from '../utils/helpers';
+
+import { createUserTask, getTask } from '../../repositories/tasks';
+import { evaluateUser, generateShortId } from '../../utils/helpers';
 
 export const createTask = async (
   req: Request,
@@ -9,9 +10,10 @@ export const createTask = async (
   _next: NextFunction
 ) => {
   try {
+    const user = await evaluateUser(req);
+
     const task: Partial<Task> = {};
 
-    const userId = 'appUser'; // Add userId when auth is done
     const taskId = generateShortId();
 
     for (const field of [
@@ -27,7 +29,7 @@ export const createTask = async (
       }
     }
 
-    task['userId'] = userId; // Add userId when auth is done
+    task['userId'] = user?.userId;
     task['taskId'] = taskId;
 
     const existingTask = await getTask(taskId);

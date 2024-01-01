@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { deleteTask, getTask } from '../repositories/tasks';
+import { deleteTask, getTask } from '../../repositories/tasks';
+import { evaluateUser } from '../../utils/helpers';
 
 export const deleteUserTask = async (
   req: Request,
@@ -12,8 +13,6 @@ export const deleteUserTask = async (
 
     const task = await getTask(taskId as string);
 
-    // Cater for if task does not belong to user (after auth)
-
     if (!task) {
       return res.respond(
         httpStatus.NOT_FOUND,
@@ -22,6 +21,16 @@ export const deleteUserTask = async (
         {
           task
         }
+      );
+    }
+
+    const user = await evaluateUser(req);
+
+    if (task.userId !== user?.userId) {
+      return res.respond(
+        httpStatus.BAD_REQUEST,
+        `Task ${taskId} does not belong to ${user!.userId}`,
+        false
       );
     }
 

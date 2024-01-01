@@ -4,4 +4,6 @@ export type Config = {
   env: string | undefined;
   commitHash: string | undefined;
   mongoUri: string | undefined;
+  jwtSecKey: string;
+  jwtExpiry: string
 };

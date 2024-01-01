@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import { TaskPriority, TaskStatus } from '../types/enums';
 
 const taskSchema = new Schema<Task>(
   {
@@ -23,11 +24,13 @@ const taskSchema = new Schema<Task>(
     },
     priority: {
       type: String,
-      required: true
+      required: true,
+      enum: TaskPriority
     },
     status: {
       type: String,
-      required: true
+      required: true,
+      enum: TaskStatus
     },
     tags: {
       type: [String],
