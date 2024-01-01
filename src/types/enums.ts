@@ -1,10 +1,3 @@
-export const roles = ['user', 'admin'];
-
-export enum UserRoles {
-  User = 'user',
-  Admin = 'admin'
-}
-
 export enum TaskStatus {
   Pending = 'pending',
   InProgress = 'inProgress',

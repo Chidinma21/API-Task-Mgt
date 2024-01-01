@@ -16,6 +16,14 @@ export const login = async (
   try {
     const { userId, email, password } = req.body;
 
+    if ((!userId && !email) || !password) {
+      return res.respond(
+        httpStatus.BAD_REQUEST,
+        'Provide complete login details',
+        false
+      );
+    }
+
     const taskOwner = userId
       ? await getTaskOwner(userId)
       : await getTaskOwnerByEmail(email);
