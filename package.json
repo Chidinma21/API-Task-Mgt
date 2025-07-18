@@ -9,7 +9,7 @@
     "tslint": "tslint --project tsconfig.json",
     "lint": "eslint \"src/**/*.ts\"",
     "lint-and-fix": "eslint \"src/**/*.ts\" --fix",
-    "build": "rimraf ./build && tsc",
+    "build": "rm -rf ./build && tsc",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "start": "ts-node --files src/index.ts",
     "dev": "./node_modules/nodemon/bin/nodemon.js",
