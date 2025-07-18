@@ -9,7 +9,7 @@ export const deleteUserTask = async (
   _next: NextFunction
 ) => {
   try {
-    const { taskId } = req.body;
+    const { taskId } = req.query;
 
     const task = await getTask(taskId as string);
 

@@ -24,7 +24,7 @@ const update = {
 };
 
 const deleteTask = {
-  body: Joi.object().keys({
+  query: Joi.object().keys({
     taskId: Joi.string().required()
   })
 };
