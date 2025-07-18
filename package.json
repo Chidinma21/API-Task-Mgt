@@ -12,7 +12,7 @@
     "prebuild": "npm install",
     "build": "rm -rf ./build && tsc",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "start": "ts-node --files src/index.ts",
+    "start": "node lib/index.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js",
     "pre-commit": "npm run prettier && npm run lint-and-fix",
     "pre-push": "npm run prettier && npm run lint-and-fix"

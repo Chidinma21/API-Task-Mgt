@@ -11,6 +11,8 @@
     "target": "es2017",
     "lib": ["es2019"],
     "forceConsistentCasingInFileNames": true,
+    "rootDir": "src",
+    "moduleResolution": "node"
   },
   "compileOnSave": true,
   "include": ["src/**/*"],
